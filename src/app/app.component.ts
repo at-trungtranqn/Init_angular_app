@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild  } from '@angular/core';
+import {FormComponent } from './form/form.component';
+import {ListComponent } from './list/list.component';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl:  './app.component.html',
+  
 })
 export class AppComponent {
-  title = 'app';
+  @ViewChild(ListComponent) listMember: any;
+  @ViewChild(FormComponent) usernames: any;
+
+  ngOnInit(){
+    this.usernames.addName = () =>{
+      this.listMember.usernames.push(this.usernames.name);
+    }
+  }
 }
