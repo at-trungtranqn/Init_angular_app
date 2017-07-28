@@ -10,7 +10,6 @@ export class EmptyDataComponent implements OnInit{
   }
 
   ngOnInit(){
-    console.log(this.emptyData)
     if(!this.emptyData){
       this.el.nativeElement.innerHTML = 'Empty';
     } else{

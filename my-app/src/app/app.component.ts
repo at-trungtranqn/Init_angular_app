@@ -19,7 +19,6 @@ export class AppComponent {
     this.eachtrainer = null;
     setTimeout(() => {
       this.eachtrainer = this.trainers[i];
-      console.log(this.trainers[i]);
     },);
   }
 }
