@@ -1,28 +1,34 @@
 <div class="container row">
   <div class="col-md-8">
     <table class="table table-hover">
-  <tr>
-    <th>Avatar</th>
-    <th>Name</th>
-    <th>Birthday</th>
-    <th>Team</th>
-    <th>Action</th>
-  </tr>
-  <tr  *ngFor="let trainer of trainers; let i = index ">
-    <td>{{trainer.avatar}}</td>
-    <td>{{trainer.name}}</td>
-    <td [emptyData]="trainer.birthday" [ngClass]="{fgray: trainer.birthday == '' }"> </td>
-    <td [ngClass]="{fred: trainer.team == 'Ruby', fyellow: trainer.team == 'FE'}" >{{trainer.team}}</td>
-    <td><button class="btn btn-primary" type="button" (click)="detail(i)">Detail</button></td>
-  </tr>
-</table>
+      <tr>
+        <th>Avatar</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Team</th>
+        <th>Action</th>
+      </tr>
+      <tr  *ngFor="let trainer of trainers; let i = index ">
+        <td>{{trainer.avatar}}</td>
+        <td>{{trainer.name}}</td>
+        <td [emptyData]="trainer.birthday" 
+          [ngClass]="{fgray: trainer.birthday == '' }"> 
+        </td>
+        <td [ngClass]="{fred: trainer.team == 'Ruby', fyellow: trainer.team == 'FE'}" >
+          {{trainer.team}}
+        </td>
+        <td><button class="btn btn-primary" type="button" (click)="detail(i)">Detail</button></td>
+      </tr>
+    </table>
   </div>
   <div class="col-md-4" *ngIf="eachtrainer != null">
-  <img src="{{eachtrainer.avatar}}" alt="">
-  <h4><strong>{{eachtrainer.name}}</strong></h4>
-  <p [emptyData]="eachtrainer.birthday" [ngClass]="{fgray: eachtrainer.birthday == '' }"></p>
-  <span>Team {{eachtrainer.team}}</span>
-</div>
+    <img src="{{eachtrainer.avatar}}" alt="">
+    <h4><strong>{{eachtrainer.name}}</strong></h4>
+    <p [emptyData]="eachtrainer.birthday" 
+      [ngClass]="{fgray: eachtrainer.birthday == '' }">
+    </p>
+    <span>Team {{eachtrainer.team}}</span>
+  </div>
 </div>
 
 

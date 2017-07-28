@@ -10,8 +10,8 @@ export class AppComponent {
   eachtrainer: any;
   constructor(){
     this.trainers = [
-      {name: 'Vi', avatar: 'anhVi', birthday: '123', team: 'FE'},
-      {name: 'Kien', avatar: 'anhKien', birthday: '', team: 'Ruby'}
+    {name: 'Vi', avatar: 'anhVi', birthday: '123', team: 'FE'},
+    {name: 'Kien', avatar: 'anhKien', birthday: '', team: 'Ruby'}
     ];
   }
 
