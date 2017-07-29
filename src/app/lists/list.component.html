@@ -1,0 +1,35 @@
+<h1 class="title">List Trainer Asian Tech</h1>
+<div class="container row ">
+  <div class="col-md-8 list-contain">
+    <table class="table table-striped">
+      <tr>
+        <th>Avatar</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Team</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let trainer of trainers; let i = index ">
+        <td><img src="{{trainer.avatar}}"></td>
+        <td>{{trainer.name}}</td>
+        <td [emptyData]="trainer.birthday"
+          [ngClass]="{gray: trainer.birthday == '' }"> 
+        </td>
+        <td [ngClass]="{red: trainer.team == 'Ruby',
+           yellow: trainer.team == 'FE', green: trainer.team == 'PHP' }" >
+          {{trainer.team}}
+        </td>
+        <td><button class="btn btn-primary" type="button" 
+          (click)="showDetail(i)">Detail</button></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-4 detail-item" *ngIf="selectTrainer != null">
+    <img src="{{selectTrainer.avatar}}" alt=''>
+    <h4><strong>{{selectTrainer.name}}</strong></h4>
+    <p [emptyData]="selectTrainer.birthday" 
+      [ngClass]="{gray: selectTrainer.birthday == '' }">
+    </p>
+    <span>Team {{selectTrainer.team}}</span>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.detail-item {
+  max-width: 32%;
+  float: left;
+  margin-left: 2%;
+}
+.list-contain {
+  max-width: 62%;
+  float: left;
+  
+}
+.red{
+  color: red;
+}
+.yellow{
+  color: yellow;
+}
+.gray{
+  color: gray;
+  font-style: italic;
+}
+.green {
+  color: green;
+}
+ 
