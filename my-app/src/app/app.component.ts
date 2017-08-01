@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { TrainersService } from './hero.service';
 
 @Component({
   selector: 'app-root',
@@ -6,19 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  trainers:any[];
-  eachtrainer: any;
-  constructor(){
-    this.trainers = [
-    {name: 'Vi', avatar: 'anhVi', birthday: '123', team: 'FE'},
-    {name: 'Kien', avatar: 'anhKien', birthday: '', team: 'Ruby'}
-    ];
-  }
+  index: number;
 
-  detail(i: number){
-    this.eachtrainer = null;
-    setTimeout(() => {
-      this.eachtrainer = this.trainers[i];
-    },);
+  onChange(i: number) {
+    this.index = i;
   }
 }
