@@ -2,10 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { ListComponent } from './lists/list.component';
+import { EmptyDataDirective } from './directives/empty-data.directive';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
+    ListComponent,
+    EmptyDataDirective
   ],
   imports: [
     BrowserModule
@@ -13,4 +18,6 @@ import { AppComponent } from './app.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+}
