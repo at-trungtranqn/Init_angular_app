@@ -1,20 +1,23 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TrainersService {
-  trainers:any[];
-  constructor(){
-    this.trainers = [
-    { name: 'anh Vi', avatar: 'https://www.shareicon.net/data/128x128/2015/12/14/207809_face_300x300.png', birthday: '123', team: 'FE'},
-    { name: 'anh Kien', avatar: 'https://www.shareicon.net/data/128x128/2015/12/14/207817_face_300x300.png', birthday: '', team: 'Ruby'},
-    { name: 'anh', avatar: '', birthday: '', team: 'Ruby'}
-    ];
-  }
-  getTrainers(): any[] {
-    return this.trainers;
+
+  trainers: Array<string> = [];
+
+  constructor(private http: Http){
   }
 
-  getTrainer(i: number): any {
-    return this.trainers[i];
+  getTrainers() {
+    return this.http.get('./assets/data/data.json')
+                    .map(res => res.json());
+  }
+
+  getTrainer() {
+    return this.http.get('./assets/data/data.json')
+                    .map(res => res.json());
   }
 }

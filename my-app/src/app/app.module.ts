@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { TrainersService } from './hero.service';
 
+import { HttpModule } from '@angular/http'
+
 import { EmptyDataComponent } from './directive/empty-data.component';
 import { DefaulfImage } from './pipe/image.pipe'
 
@@ -19,7 +21,8 @@ import { ListComponent } from './list/list.component';
     DefaulfImage
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   providers: [TrainersService],
   bootstrap: [AppComponent]
