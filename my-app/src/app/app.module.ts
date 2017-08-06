@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { TrainersService } from './hero.service';
+import { AppService } from './app.service';
 
 import { HttpModule } from '@angular/http'
 
@@ -24,7 +24,7 @@ import { ListComponent } from './list/list.component';
     BrowserModule,
     HttpModule
   ],
-  providers: [TrainersService],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

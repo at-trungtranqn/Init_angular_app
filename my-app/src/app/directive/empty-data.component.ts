@@ -12,7 +12,7 @@ export class EmptyDataComponent implements OnChanges{
   ngOnChanges(){
     if(!this.emptyData){
       this.el.nativeElement.innerHTML = 'Empty';
-      this.el.nativeElement.className = 'fgray';
+      this.el.nativeElement.className = 'gray';
     } else{
       this.el.nativeElement.innerHTML = this.emptyData;
       this.el.nativeElement.className = '';

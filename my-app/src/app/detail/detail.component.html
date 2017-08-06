@@ -1,6 +1,6 @@
-<div class="col-md-4" *ngIf="eachtrainer != null">
-  <img src="{{ eachtrainer.avatar | image:true }}" alt="">
-  <h4><strong>{{eachtrainer.name}}</strong></h4>
-  <p [emptyData]="eachtrainer.birthday"></p>
-  <span>Team {{eachtrainer.team}}</span>
+<div class="col-md-4" *ngIf="selectedTrainer != null">
+  <img src="{{ selectedTrainer.avatar | image:true }}" alt="">
+  <h4><strong>{{selectedTrainer.name}}</strong></h4>
+  <p [emptyData]="selectedTrainer.birthday"></p>
+  <span>Team {{selectedTrainer.team}}</span>
 </div>

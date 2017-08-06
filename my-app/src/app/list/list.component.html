@@ -1,5 +1,6 @@
-<div class="col-md-8">
-  <table class="table table-hover">
+<h1 class="title">List Trainer Asian Tech</h1>
+<div class=" col-md-8">
+  <table class="table table-striped">
     <tr>
       <th>Avatar</th>
       <th>Name</th>
@@ -7,14 +8,22 @@
       <th>Team</th>
       <th>Action</th>
     </tr>
-    <tr *ngFor="let trainer of trainers">
-      <td><img src="{{ trainer.avatar | image:true }}" alt=""></td>
+    <tr *ngFor="let trainer of trainers; let i = index ">
+      <td><img src="{{ trainer.avatar | image:true }}"></td>
       <td>{{trainer.name}}</td>
-      <td [emptyData]="trainer.birthday"></td>
-      <td [ngClass]="{fred: trainer.team == 'Ruby', fyellow: trainer.team == 'FE'}" >
+      <td [emptyData]="trainer.birthday" 
+        [ngClass]="{gray: trainer.birthday == '' }"> 
+      </td>
+      <td [ngClass]="{
+        red: trainer.team == 'Ruby',
+        yellow: trainer.team == 'FE',
+        green: trainer.team == 'PHP' 
+        }"
+      >
         {{trainer.team}}
       </td>
-      <td><button class="btn btn-primary" type="button" (click)="detail(trainer.id)">Detail</button></td>
+      <td><button class="btn btn-primary" type="button" 
+        (click)="getDetail(trainer.id)">Detail</button></td>
     </tr>
   </table>
 </div>

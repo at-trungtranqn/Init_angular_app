@@ -1,37 +1,36 @@
 import { Component, Input } from '@angular/core';
-import { TrainersService } from '../hero.service';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'detail-member',
   templateUrl: './detail.component.html',
-  styleUrls: ['../app.component.css'],
-  providers: [TrainersService]
+  styleUrls: ['./detail.component.css'],
+  providers: [AppService]
 })
 export class DetailComponent {
 
   @Input() id: number;
 
-  eachtrainer: any;
+  selectedTrainer: any;
 
-  constructor(private listTrainer: TrainersService) {
+  constructor(private listTrainer: AppService) {
   }
 
   ngOnChanges() {
     this.listTrainer.getTrainer().subscribe(
-            data => {
-              let trainers = data.trainers
-              // this.eachtrainer = trainers.filter(trainer => trainer.id === this.id) ;
-              for(let trainer of trainers){
-                if(trainer.id === this.id){
-                  this.eachtrainer = trainer;
-                  break;
-                }
-              }
-            },
-            err => {
-              console.log('Can not get data', err.status, err.url)
-            },
-            () => console.log('Completed!')
-          );
+      data => {
+        let trainers = data.trainers
+        for(let trainer of trainers){
+          if(trainer.id === this.id){
+            this.selectedTrainer = trainer;
+            break;
+          }
+        }
+      },
+      err => {
+        console.log('Can not get data', err.status, err.url)
+      },
+      () => console.log('Completed!')
+    );
   }
 }

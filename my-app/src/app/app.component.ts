@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TrainersService } from './hero.service';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',

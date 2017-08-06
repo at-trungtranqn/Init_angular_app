@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class TrainersService {
+export class AppService {
 
   trainers: Array<string> = [];
 
@@ -12,12 +12,12 @@ export class TrainersService {
   }
 
   getTrainers() {
-    return this.http.get('./assets/data/data.json')
-                    .map(res => res.json());
+    return this.http.get('./data-json/data.json')
+      .map(res => res.json());
   }
 
   getTrainer() {
-    return this.http.get('./assets/data/data.json')
-                    .map(res => res.json());
+    return this.http.get('./data-json/data.json')
+      .map(res => res.json());
   }
 }
