@@ -18,3 +18,7 @@
 .title {
   text-align: center;
 }
+ .gray{
+  color: gray;
+  font-style: italic;
+}

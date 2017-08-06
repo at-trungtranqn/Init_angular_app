@@ -1,19 +1,36 @@
 import { Component, Input } from '@angular/core';
-import { ListsService } from '../list.service'
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['../app.component.css'],
-  providers: [ListsService]
+  styleUrls: ['./detail.component.css'],
+  providers: [AppService]
 })
 export class DetailComponent {
+
   @Input() id: number;
+
   trainerSelected: any;
-  constructor(private list: ListsService) {
+
+  constructor(private listTrainer: AppService) {
   }
 
-  ngDoCheck() {
-    this.trainerSelected = this.list.getTrainer(this.id);
+  ngOnChanges() {
+    this.listTrainer.getTrainer().subscribe(
+      data => {
+        let trainers = data.trainers
+        for(let trainer of trainers){
+          if(trainer.id === this.id){
+            this.trainerSelected = trainer;
+            break;
+          }
+        }
+      },
+      err => {
+        console.log('Can not get data', err.status, err.url)
+      },
+      () => console.log('Completed!')
+    );
   }
 }

@@ -1,25 +1,36 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { ListsService } from '../list.service'
+import { AppService } from '../app.service';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
-  providers: [ListsService]
+  providers: [AppService]
 })
 export class ListComponent {
-  trainers: any[];
+
+  trainers: Array<any> = [];
 
   @Output() showdetail: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private showSvc: ListsService) {
+  constructor(private listTrainer: AppService) {
+    this.listTrainer.getTrainers().subscribe(
+      data => {
+        this.trainers = data.trainers || [];
+      },
+      err => {
+        console.log('Can not get data', err.status, err.url)
+      },
+      () => console.log('Completed!')
+    );
   }
 
   ngOnInit() {
-    this.trainers = this.showSvc.getTrainers();
+    
   }
 
-  displayDetail(i: number){
-    this.showdetail.emit(i);
+  getDetail(id: number){
+    this.showdetail.emit(id);
   }
 }

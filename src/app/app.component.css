@@ -1,4 +1,6 @@
- .gray{
-  color: gray;
-  font-style: italic;
+
+.container-list-detail:after {
+    content: "";
+    clear: both;
+    display: block;
 }

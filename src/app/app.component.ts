@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ListsService } from './list.service';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,6 @@
 <div class="col-md-4" *ngIf="trainerSelected != null">
   <img src="{{ trainerSelected.avatar | image:true }}" alt="">
   <h4><strong>{{trainerSelected.name}}</strong></h4>
-  <p [emptyData]="trainerSelected.birthday" [ngClass]="{gray: trainerSelected.birthday == '' }"></p>
+  <p [emptyData]="trainerSelected.birthday"></p>
   <span>Team {{trainerSelected.team}}</span>
 </div>
