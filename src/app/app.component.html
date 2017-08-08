@@ -1,20 +1,78 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io//">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container">
 
+  <div class="col-md-6 col-md-offset-3">
+    <h2>Add new member</h2>
+
+
+    <form [formGroup]="memberForm" (ngSubmit)="addMember()" class="form-horizontal">
+      <fieldset formGroupName="personal">
+
+        <div class="form-group">
+          <label for="">Fullname</label>
+          <input type="text" formControlName="fullname" class="form-control" id="" placeholder="Fullname">
+        </div>
+
+        <div class="form-group">
+          <label for="">Birthday</label>
+          <input type="date" formControlName="birthday" class="form-control" id="" placeholder="Birthday">
+        </div>
+
+        <div class="form-group">
+          <label for="">Avatar</label>
+          <input type="text" formControlName="avatar" class="form-control" id="" placeholder="Avatar">
+        </div>
+      </fieldset>
+
+      <fieldset formGroupName="company">
+        <div class="form-group">
+          <label for="">Joined</label>
+          <input type="date" formControlName="joined" class="form-control" id="" placeholder="Joined">
+        </div>
+
+        <div class="form-group">
+          <label for="">Team</label>
+          <select formControlName="team" class="form-control">
+            <option *ngFor="let team of teams" value="{{team}}">{{team}}</option>
+          </select>
+        </div>
+      </fieldset>
+
+        <div class="form-group">
+          <label for="">Skill</label>
+          <input type="text" formControlName="skill" class="form-control" id="" placeholder="Example: Js, HTML, PHP">
+        </div>
+
+      <button type="submit" [disabled]="!memberForm.valid" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+
+  <div *ngIf="members" class="col-md-8 col-md-offset-2">
+    <h2>List member</h2>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Avatar</th>
+          <th>Fullname</th>
+          <th>Birthday</th>
+          <th>Team</th>
+          <th>Skill</th>
+          <th>Joined</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of members">
+          <td><img src="{{member.personal.avatar}}" alt=""></td>
+          <td>{{member.personal.fullname}}</td>
+          <td>{{member.personal.birthday}}</td>
+          <td>{{member.company.team}}</td>
+          <td>{{member.company.skill}}</td>
+          <td>{{member.company.joined}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
